@@ -15,6 +15,7 @@
   "labels": [],
   "yAxis": "y_values",
   "xAxis": "",
-  "generatedOn": "06/21/2023 12:56:38 PM 2023",
-  "version": ""
+  "generatedOn": "06/21/2023 01:00:36 PM 2023",
+  "version": "",
+  "skipColumns": [".content"]
 }
