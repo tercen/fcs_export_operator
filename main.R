@@ -46,8 +46,8 @@ zip(zipfile = zipfile, files = files)
 
 on.exit(unlink(c(zipfile, files)))
 
-tim::plot_file_to_df(zipfile, filename = "Tercen_FCS_Export.zip") %>%
-  select(-checksum) %>%
+file_to_tercen(file_path = zipfile, filename = "Tercen_FCS_Export.zip") %>%
+  ctx$addNamespace() %>%
   as_relation() %>%
   as_join_operator(list(), list()) %>%
   save_relation(ctx)

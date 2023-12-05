@@ -456,12 +456,13 @@
     },
     "tercen": {
       "Package": "tercen",
-      "Version": "0.13.0",
+      "Version": "0.13.5",
       "Source": "Repository",
       "Repository": "TERCEN",
-      "Hash": "2b99817b3a000b5b4591b5173947a0ac",
+      "Hash": "f3e7867c738bca726adb6243b2ed45ef",
       "Requirements": [
         "R6",
+        "base64enc",
         "dplyr",
         "httr",
         "mtercen",
