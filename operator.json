@@ -1,6 +1,6 @@
 {
-  "name": "FCS Export",
-  "description": "Export data from the crosstab view to FCS Files.",
+  "name": "Export FCS",
+  "description": "Exports data from the crosstab view to FCS Files.",
   "tags": [
     "export"
   ],
