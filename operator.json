@@ -1,10 +1,14 @@
 {
   "name": "FCS Export",
   "description": "Export data from the crosstab view to FCS Files.",
-  "tags": ["file conversion", "export"],
-  "authors": ["tercen"],
-  "urls": ["https://github.com/tercen/fcs_export_operator"],
+  "tags": [
+    "export"
+  ],
+  "authors": [
+    "tercen"
+  ],
+  "urls": [
+    "https://github.com/tercen/fcs_export_operator"
+  ],
   "properties": []
 }
-
-
