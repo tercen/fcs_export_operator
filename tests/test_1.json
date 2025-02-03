@@ -4,10 +4,8 @@
   "namespace": "ds6",
   "inputDataUri": "test_1_in.csv",
   "outputDataUri": ["test_1_out_1.csv"],
-  "columns": [
-    "observation"
-  ],
-  "rows": ["variable"],
+  "columns": ["variable"],
+  "rows": ["observation"],
   "colors": [
     "color",
     "sex"

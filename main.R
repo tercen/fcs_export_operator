@@ -5,20 +5,25 @@ suppressPackageStartupMessages({
   library(flowCore)
 })
 
+source("./utils.R")
+
 ctx = tercenCtx()
 
-data <- ctx$as.matrix() %>% t()
-channels <- ctx$rselect()[[1]]
-colnames(data) <- channels
+data <- ctx$as.matrix()
 
-annotation <- ctx$select(c(".ci", ctx$colors, ctx$labels)) %>% 
+channels <- ctx$cselect() %>% 
+  tidyr::unite(col = "new_name", sep = "_")
+
+colnames(data) <- channels[["new_name"]]
+
+annotation <- ctx$select(c(".ri", ctx$colors, ctx$labels)) %>% 
   distinct() %>%
   mutate_at(unlist(ctx$labels), ~as.numeric(as.factor(.)))
 
 data <- data %>% 
   as_tibble() %>%
-  mutate(.ci = 1:nrow(.) - 1L) %>%
-  left_join(annotation, by = ".ci")
+  mutate(.ri = 1:nrow(.) - 1L) %>%
+  left_join(annotation, by = ".ri")
 
 grouping_factor <- unlist(ctx$colors)
 if(is.null(grouping_factor)) {
@@ -30,7 +35,7 @@ data <- data %>%
   group_by(across(contains(grouping_factor)))
 
 flow.frames <- data %>% 
-  group_map(~tim::matrix_to_flowFrame(as.matrix(.x))) 
+  group_map(~matrix_to_flowFrame(as.matrix(.x))) 
 
 names(flow.frames) <- group_keys(data) %>% 
   tidyr::unite(col = "File", everything(), sep = " - ") %>%
