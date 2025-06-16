@@ -10,5 +10,74 @@
   "urls": [
     "https://github.com/tercen/fcs_export_operator"
   ],
-  "properties": []
+  "properties": [],
+  "operatorSpec": {
+    "kind": "OperatorSpec",
+    "ontologyUri": "https://tercen.com/_ontology/tercen",
+    "ontologyVersion": "0.0.1",
+    "inputSpecs": [
+      {
+        "kind": "CrosstabSpec",
+        "metaFactors": [
+          {
+            "kind": "MetaFactor",
+            "name": "Channels",
+            "type": "",
+            "description": "Channel identifiers",
+            "ontologyMapping": "variable",
+            "crosstabMapping": "row",
+            "cardinality": "1..n",
+            "factors": []
+          },
+          {
+            "kind": "MetaFactor",
+            "name": "Events",
+            "type": "",
+            "description": "Event identifiers",
+            "ontologyMapping": "observation",
+            "crosstabMapping": "column",
+            "cardinality": "1..n",
+            "factors": []
+          },
+          {
+            "kind": "MetaFactor",
+            "name": "Colors",
+            "type": "",
+            "description": "Factor(s) used to split data into multiple FCS files",
+            "ontologyMapping": "colors",
+            "crosstabMapping": "color",
+            "cardinality": "",
+            "factors": []
+          },
+          {
+            "kind": "MetaFactor",
+            "name": "Labels",
+            "type": "",
+            "description": "Factor(s) used as annotations (e.g., UMAP coordinates, cluster ID)",
+            "ontologyMapping": "labels",
+            "crosstabMapping": "label",
+            "cardinality": "",
+            "factors": []
+          }
+        ],
+        "axis": [
+          {
+            "kind": "AxisSpec",
+            "metaFactors": [
+              {
+                "kind": "MetaFactor",
+                "name": "Measurement",
+                "type": "numeric",
+                "description": "Measurement values",
+                "ontologyMapping": "measurement",
+                "crosstabMapping": "y",
+                "cardinality": "1",
+                "factors": []
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
 }
