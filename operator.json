@@ -25,7 +25,7 @@
             "type": "",
             "description": "Channel identifiers",
             "ontologyMapping": "variable",
-            "crosstabMapping": "row",
+            "crosstabMapping": "column",
             "cardinality": "1..n",
             "factors": []
           },
@@ -35,28 +35,8 @@
             "type": "",
             "description": "Event identifiers",
             "ontologyMapping": "observation",
-            "crosstabMapping": "column",
+            "crosstabMapping": "row",
             "cardinality": "1..n",
-            "factors": []
-          },
-          {
-            "kind": "MetaFactor",
-            "name": "Colors",
-            "type": "",
-            "description": "Factor(s) used to split data into multiple FCS files",
-            "ontologyMapping": "colors",
-            "crosstabMapping": "color",
-            "cardinality": "",
-            "factors": []
-          },
-          {
-            "kind": "MetaFactor",
-            "name": "Labels",
-            "type": "",
-            "description": "Factor(s) used as annotations (e.g., UMAP coordinates, cluster ID)",
-            "ontologyMapping": "labels",
-            "crosstabMapping": "label",
-            "cardinality": "",
             "factors": []
           }
         ],
@@ -72,6 +52,26 @@
                 "ontologyMapping": "measurement",
                 "crosstabMapping": "y",
                 "cardinality": "1",
+                "factors": []
+              },
+              {
+                "kind": "MetaFactor",
+                "name": "File Identifier",
+                "type": "",
+                "description": "Factor(s) used to split data into multiple FCS files",
+                "ontologyMapping": "colors",
+                "crosstabMapping": "color",
+                "cardinality": "",
+                "factors": []
+              },
+              {
+                "kind": "MetaFactor",
+                "name": "Annotation Factors",
+                "type": "",
+                "description": "Factor(s) used as annotations (e.g., UMAP coordinates, cluster ID)",
+                "ontologyMapping": "labels",
+                "crosstabMapping": "label",
+                "cardinality": "",
                 "factors": []
               }
             ]
