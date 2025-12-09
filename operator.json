@@ -38,26 +38,6 @@
             "crosstabMapping": "column",
             "cardinality": "1..n",
             "factors": []
-          },
-          {
-            "kind": "MetaFactor",
-            "name": "Colors",
-            "type": "",
-            "description": "Factor(s) used to split data into multiple FCS files",
-            "ontologyMapping": "colors",
-            "crosstabMapping": "color",
-            "cardinality": "",
-            "factors": []
-          },
-          {
-            "kind": "MetaFactor",
-            "name": "Labels",
-            "type": "",
-            "description": "Factor(s) used as annotations (e.g., UMAP coordinates, cluster ID)",
-            "ontologyMapping": "labels",
-            "crosstabMapping": "label",
-            "cardinality": "",
-            "factors": []
           }
         ],
         "axis": [
@@ -72,6 +52,36 @@
                 "ontologyMapping": "measurement",
                 "crosstabMapping": "y",
                 "cardinality": "1",
+                "factors": []
+              }
+            ]
+          },
+          {
+            "kind": "AxisSpec",
+            "metaFactors": [
+              {
+                "kind": "MetaFactor",
+                "name": "Colors",
+                "type": "",
+                "description": "Factor(s) used to split data into multiple FCS files",
+                "ontologyMapping": "factor",
+                "crosstabMapping": "color",
+                "cardinality": "0..n",
+                "factors": []
+              }
+            ]
+          },
+          {
+            "kind": "AxisSpec",
+            "metaFactors": [
+              {
+                "kind": "MetaFactor",
+                "name": "Labels",
+                "type": "",
+                "description": "Factor(s) used as annotations (e.g., UMAP coordinates, cluster ID)",
+                "ontologyMapping": "factor",
+                "crosstabMapping": "label",
+                "cardinality": "0..n",
                 "factors": []
               }
             ]
