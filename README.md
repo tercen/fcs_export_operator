@@ -10,8 +10,8 @@ crosstab view.
 Input data|.
 ---|---
 `y-axis`        | Measurement value.
-`row`           | Channels.
-`column`        | Events.
+`column`           | Channels.
+`row`        | Events.
 `colors`        | Factor(s) used to split data into multiple FCS files.
 `labels`        | Factor(s) used as annotations (e.g. UMAP coordinates, cluster ID) that will be added to expression data and converted as numeric values.
 
