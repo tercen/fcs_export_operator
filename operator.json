@@ -59,9 +59,9 @@
                 "name": "File Identifier",
                 "type": "",
                 "description": "Factor(s) used to split data into multiple FCS files",
-                "ontologyMapping": "colors",
+                "ontologyMapping": "color",
                 "crosstabMapping": "color",
-                "cardinality": "",
+                "cardinality": "0..n",
                 "factors": []
               },
               {
@@ -69,37 +69,7 @@
                 "name": "Annotation Factors",
                 "type": "",
                 "description": "Factor(s) used as annotations (e.g., UMAP coordinates, cluster ID)",
-                "ontologyMapping": "labels",
-                "crosstabMapping": "label",
-                "cardinality": "",
-                "factors": []
-              }
-            ]
-          },
-          {
-            "kind": "AxisSpec",
-            "metaFactors": [
-              {
-                "kind": "MetaFactor",
-                "name": "Colors",
-                "type": "",
-                "description": "Factor(s) used to split data into multiple FCS files",
-                "ontologyMapping": "factor",
-                "crosstabMapping": "color",
-                "cardinality": "0..n",
-                "factors": []
-              }
-            ]
-          },
-          {
-            "kind": "AxisSpec",
-            "metaFactors": [
-              {
-                "kind": "MetaFactor",
-                "name": "Labels",
-                "type": "",
-                "description": "Factor(s) used as annotations (e.g., UMAP coordinates, cluster ID)",
-                "ontologyMapping": "factor",
+                "ontologyMapping": "label",
                 "crosstabMapping": "label",
                 "cardinality": "0..n",
                 "factors": []
