@@ -59,7 +59,7 @@
                 "name": "File Identifier",
                 "type": "",
                 "description": "Factor(s) used to split data into multiple FCS files",
-                "ontologyMapping": "color",
+                "ontologyMapping": "group",
                 "crosstabMapping": "color",
                 "cardinality": "0..n",
                 "factors": []
@@ -69,7 +69,7 @@
                 "name": "Annotation Factors",
                 "type": "",
                 "description": "Factor(s) used as annotations (e.g., UMAP coordinates, cluster ID)",
-                "ontologyMapping": "label",
+                "ontologyMapping": "pairing",
                 "crosstabMapping": "label",
                 "cardinality": "0..n",
                 "factors": []
