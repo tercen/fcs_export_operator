@@ -97,7 +97,7 @@
               "attributes": [
                 {
                   "kind": "Attribute",
-                  "name": "documentId",
+                  "name": "filename",
                   "type": "string"
                 },
                 {
@@ -107,7 +107,7 @@
                 },
                 {
                   "kind": "Attribute",
-                  "name": "filename",
+                  "name": ".content",
                   "type": "string"
                 }
               ]
