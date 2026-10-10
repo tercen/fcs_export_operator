@@ -1,0 +1,29 @@
+{
+  "kind": "OperatorUnitTest",
+  "name": "fcs_export_three_samples",
+  "namespace": "ds0",
+  "inputDataUri": "export_input.csv",
+  "outputDataUri": [
+    "table1.csv"
+  ],
+  "columns": [
+    "event_id",
+    "filename",
+    "umap.1",
+    "population"
+  ],
+  "rows": [
+    "channel",
+    "marker"
+  ],
+  "colors": [],
+  "labels": [],
+  "yAxis": "value",
+  "xAxis": "",
+  "generatedOn": "10/10/2026 06:00:00 PM 2026",
+  "version": "",
+  "propertyValues": [],
+  "skipColumns": [
+    ".content"
+  ]
+}
