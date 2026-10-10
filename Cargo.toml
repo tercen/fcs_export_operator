@@ -1,0 +1,48 @@
+[package]
+name = "fcs_export_operator"
+version = "1.0.0"
+edition = "2024"
+description = "Export the projected cells as FCS 3.1 files in a ZIP, for Tercen (Rust)"
+license = "Apache-2.0"
+
+[lib]
+name = "fcs_export_operator"
+path = "src/lib.rs"
+
+[[bin]]
+name = "fcs_export_operator"
+path = "src/main.rs"
+
+[[bin]]
+name = "dev"
+path = "src/bin/dev.rs"
+
+[dependencies]
+anyhow = "1"
+thiserror = "1"
+tercen-rs = { git = "https://github.com/tercen/tercen-rs", branch = "main" }
+tokio = { version = "1.49", features = ["rt-multi-thread", "macros", "time"] }
+tonic = "0.14"
+futures = "0.3"
+rustson = { git = "https://github.com/tercen/rustson", branch = "master" }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+tikv-jemallocator = "0.6"
+rayon = "1.10"
+flate2 = "1"
+crc32fast = "1"
+base64 = "0.22"
+
+[dev-dependencies]
+tempfile = "3"
+zip = { version = "2", default-features = false, features = ["deflate"] }
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+strip = true
+panic = "abort"
+
+[profile.dev]
+opt-level = 1

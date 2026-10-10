@@ -1,8 +1,10 @@
 {
   "name": "Export FCS",
-  "description": "Exports data from the crosstab view to FCS Files.",
+  "description": "Writes the projected cells as FCS 3.1 files, one per sample, in a ZIP. Version 1 is a Rust implementation with a transposed projection: channels on rows, cells on columns, with the sample and any annotations (UMAP, cluster, population) as column factors, stored once per cell instead of once per value. Numbers are written as they are; text is written as codes 1..k with a legend.",
   "tags": [
-    "export"
+    "export",
+    "cytometry",
+    "fcs"
   ],
   "authors": [
     "tercen"
@@ -10,7 +12,28 @@
   "urls": [
     "https://github.com/tercen/fcs_export_operator"
   ],
-  "properties": [],
+  "communicationProtocol": "grpc",
+  "container": "ghcr.io/tercen/fcs_export_operator:1.0.0",
+  "properties": [
+    {
+      "kind": "StringProperty",
+      "name": "file_factor",
+      "defaultValue": "",
+      "description": "Column factor that splits cells into files, one FCS file per value. Empty: the column factor called filename (or ending in .filename); without one, every cell goes into one file."
+    },
+    {
+      "kind": "StringProperty",
+      "name": "datatype",
+      "defaultValue": "F",
+      "description": "F writes 32-bit floats, as cytometers and FlowJo do; D writes 64-bit, needed for integer ids above 16,777,216."
+    },
+    {
+      "kind": "StringProperty",
+      "name": "zip_name",
+      "defaultValue": "Tercen_FCS_Export.zip",
+      "description": "Name of the ZIP."
+    }
+  ],
   "operatorSpec": {
     "kind": "OperatorSpec",
     "ontologyUri": "https://tercen.com/_ontology/tercen",
@@ -23,19 +46,19 @@
             "kind": "MetaFactor",
             "name": "Channels",
             "type": "",
-            "description": "Channel identifiers",
+            "description": "The channel ($PnN), and optionally the marker as a second row factor ($PnS).",
             "ontologyMapping": "variable",
-            "crosstabMapping": "column",
+            "crosstabMapping": "row",
             "cardinality": "1..n",
             "factors": []
           },
           {
             "kind": "MetaFactor",
-            "name": "Events",
+            "name": "Cells",
             "type": "",
-            "description": "Event identifiers",
+            "description": "The cells. The file factor (filename) splits them into files; every other column factor (UMAP, cluster, population, event id) becomes a parameter of every file.",
             "ontologyMapping": "observation",
-            "crosstabMapping": "row",
+            "crosstabMapping": "column",
             "cardinality": "1..n",
             "factors": []
           }
@@ -46,32 +69,12 @@
             "metaFactors": [
               {
                 "kind": "MetaFactor",
-                "name": "Measurement",
+                "name": "Value",
                 "type": "double",
-                "description": "Measurement values",
+                "description": "The value of each channel for each cell.",
                 "ontologyMapping": "measurement",
                 "crosstabMapping": "y",
                 "cardinality": "1",
-                "factors": []
-              },
-              {
-                "kind": "MetaFactor",
-                "name": "File Identifier",
-                "type": "",
-                "description": "Factor(s) used to split data into multiple FCS files",
-                "ontologyMapping": "group",
-                "crosstabMapping": "color",
-                "cardinality": "0..n",
-                "factors": []
-              },
-              {
-                "kind": "MetaFactor",
-                "name": "Annotation Factors",
-                "type": "",
-                "description": "Factor(s) used as annotations (e.g., UMAP coordinates, cluster ID)",
-                "ontologyMapping": "pairing",
-                "crosstabMapping": "label",
-                "cardinality": "0..n",
                 "factors": []
               }
             ]
@@ -82,7 +85,7 @@
     "outputSpecsV2": [
       {
         "kind": "OperatorJoinSpec",
-        "description": "Export operator - outputs ZIP file with FCS files",
+        "description": "Export operator - outputs a ZIP of FCS files",
         "joinOperators": [
           {
             "kind": "JoinOperator",
